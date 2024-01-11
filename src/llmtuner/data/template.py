@@ -805,3 +805,18 @@ register_template(
         "\n"
     ]
 )
+
+# ----------------------------------------------
+# 日本語版Llama2のチャットテンプレート (llama2_ja)
+#
+register_template(
+    name="llama2_ja",
+    prefix=[
+        "<<SYS>>\n{{system}}\n<</SYS>>\n\n"
+    ],
+    prompt=[
+        "[INST] {{query}} [/INST]"
+    ],
+    system="あなたは誠実で優秀な日本人のアシスタントです。",
+    sep=[]
+)
