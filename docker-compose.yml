@@ -1,0 +1,26 @@
+services:
+  factory:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    shm_size: '16gb'
+    environment:
+      - CUDA_LAUNCH_BLOCKING=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+    volumes:
+      - .:/Factory
+    # command:
+    #   CUDA_VISIBLE_DEVICES=0 python src/train_web.py
+
+    working_dir: /Factory
+
+    ports:
+      - "7860:7860"
+
+    tty: true
